@@ -1,0 +1,55 @@
+<!--Displaying all cars from databas-->
+<table>
+  <tr>
+    <th>License Number</th>
+    <th>Manufacturer</th>
+    <th>Model</th>
+    <th>Grear</th>
+    <th>Car Usage (km)</th>
+    <th>Usable/ Not usable</th>
+    <th>Image</th>
+  </tr>
+  <tr *ngFor="let car of listOfCars">
+    <td>{{car.LicenseNumber}}</td>
+    <td>{{car.CarModel.Manufacturer}}</td>
+    <td>{{car.CarModel.Model}}</td>
+    <td>{{car.CarModel.IsGear}}</td>
+    <td>{{car.CarUsage}}</td>
+    <td>{{car.IsUsable}}</td>
+    <td ><img src='data:image/jpeg;base64,{{car.Image}}'/></td>
+    <td><button (click)="deleteCarFromInventory(car)">Delete</button></td>
+    <td><button (click)="catchEditCar(car)">Edit</button></td>
+  </tr>
+</table>
+
+<br /><br /><br /><br />
+<!--Create/ Update car form-->
+<button class="displayButton" (click)="DisplayNewCarSection()">Add new car to inventory</button><br>
+<form #newCarToRent="ngForm" [hidden]="newCarSectionDisplay"> 
+      <label>License Number</label>
+      <input required #newLicense="ngModel"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+      type = "number"
+      maxlength = "8"[(ngModel)]="car.LicenseNumber" name="licenseNumber" [placeholder]="licensePlaceholder"/> <br><br>
+      <label>Usable/ Not Usable</label>
+      <input #newCarUsable type="checkbox" [(ngModel)]="car.isUsable" name="IsUsable"/><br><br>
+      <label>Is the car avalible</label>
+      <input #newCarAvalible type="checkbox" [(ngModel)]="car.isAvalible" name="IsAvalible"/><br><br>
+      <label>Car usage KM</label>
+      <input required #newUsage="ngModel" placeholder="Enter the car usage in KM" type="number" [(ngModel)]="car.CarUsage" name="usage"/> <br><br>
+      <label>List of car lots</label>
+      <select required #newLotChoice="ngModel" [(ngModel)]="car.Lot" name="lot">
+        <option [value]="lot.ID" *ngFor="let lot of listOfCarLot">
+            {{lot.LotName}}
+        </option>
+      </select><br><br>
+      <label>List of car models</label>
+      <select required #newCarModelChoice="ngModel" [(ngModel)]="car.carType" name="carType">
+        <option [value]="carModel.ModelId" *ngFor="let carModel of listOfCarTypes">
+          {{ carModel.Manufacturer }} {{ carModel.Model }}
+        </option>
+      </select>
+      <br><br>
+      <app-image-upload (imageSource)=addImageToUser($event)></app-image-upload>
+      <br> <br>
+      <button [disabled]="!newCarToRent.form.valid" #addCarButton (click)="submitAction(car)">{{submitText}}</button>
+</form>

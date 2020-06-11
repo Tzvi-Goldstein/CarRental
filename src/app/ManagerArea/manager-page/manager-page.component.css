@@ -1,0 +1,17 @@
+button{
+    background-color: beige;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    white-space: normal;
+}
+a{
+    text-decoration: solid;
+    font-size: x-large;
+    text-decoration: none;
+    font-style: bolder;
+}
+button:hover{
+    background-color: darkkhaki;
+}

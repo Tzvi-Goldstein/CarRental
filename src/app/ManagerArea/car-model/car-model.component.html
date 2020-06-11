@@ -1,0 +1,44 @@
+<!--Displaying all cars models in database-->
+<table>
+    <tr>
+      <th>ID</th>
+      <th>Manufacturer</th>
+      <th>Model</th>
+      <th>Cost Per Day</th>
+      <th>Fee per late day </th>
+      <th>Year Manufactured</th>
+      <th>Gear/ Not Gear</th>
+    </tr>
+    <tr *ngFor="let car of listOfCarTypes">
+      <td>{{car.ModelId}}</td>
+     <td>{{car.Manufacturer}}</td>
+      <td>{{car.Model}}</td>
+      <td>{{car.CostPerDay}}</td>
+      <td>{{car.DelayCostPerDay}}</td>
+      <td>{{car.YearManufactured}}</td>
+      <td>{{car.IsGear}}</td>
+      <td><button (click)="deleteModel(car)">Delete</button></td>
+      <td><button (click)="catchEditModel(car)">Edit</button></td>
+    </tr>
+  </table>
+
+ <br /><br /><br /><br />
+  <!--Create/ Update car model form-->
+  <button class="displayButton" (click)="DisplayNewModelSection()">Add new car model that you will sell</button>
+  <form #newModel="ngForm" [hidden]="newModelSectionDisplay"> 
+        <label>Manufacturer</label>
+        <input required #manufacturerName="ngModel" type="text"[(ngModel)]="carType.Manufacturer" name="manufacturer" placeholder="manufacturer..."/> <br><br>
+        <label>Model Name</label>
+        <input required #modelName="ngModel" type="text" [(ngModel)]="carType.Model" name="model"/><br><br>
+        <label>Cost Per Day</label>
+        <input required #cost="ngModel" type="number" [(ngModel)]="carType.CostPerDay" name="costPerDay"/><br><br>
+        <label>Delay Cost Per Day</label>
+        <input placeholder="Delay Cost Per Day" type="number" [(ngModel)]="carType.DelayCostPerDay" name="delayCostPerDay"/> <br><br>
+        <label>Year Manufactured</label>
+        <input required #yearManufactor="ngModel" min="2000" type="number" [(ngModel)]="carType.YearManufactured" name="yearManufactured"><br><br>
+        <label>Gear/Not Gear</label>
+        <input type="checkbox" [(ngModel)]="carType.IsGear" name="isGear">
+        <br> <br>
+        <button [disabled]="!newModel.form.valid" #addModel (click)="submitAction(carType)">{{submitText}}</button>
+  </form>
+  

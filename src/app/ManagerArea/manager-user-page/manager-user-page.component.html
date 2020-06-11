@@ -1,0 +1,53 @@
+
+  <!-- Displays all users-->
+<table>
+    <tr>
+      <th>Id</th>
+      <th>Full Name</th>
+      <th>User Name</th>
+      <th>Gender</th>
+      <th>Birthday</th>
+      <th>Email</th>
+      <th>Password</th>
+      <th>Permissions</th>
+      <th>Image</th>
+    </tr>
+    <tr *ngFor="let user of listOfUsers">
+      <td>{{user.Tz}}</td>
+      <td>{{user.Fullname}}</td>
+      <td>{{user.UserName}}</td>
+      <td>{{user.Gender}}</td>
+      <td>{{user.Birthdate}}</td>
+      <td>{{user.Email}}</td>
+      <td>{{user.Password}}</td>
+      <td>{{user.Permissions}}</td>
+      <td ><img src='data:image/jpeg;base64,{{user.Image}}'/></td>
+      <td><button (click)="deleteUser(user)">Delete</button></td>
+      <td><button (click)="catchEditUser(user)">Edit</button></td>
+    </tr>
+  </table>
+  <br><br>
+  <!-- Create/ Update user form-->
+    <button (click)="DisplayNewUsersSection()">To add a new user</button><br><br>
+  <form #newForm [hidden]="NewUserDisplay">
+    <label>ID</label> 
+    <input #newId [placeholder]="idPlaceholder"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+    type = "number"
+    maxlength = "9" [(ngModel)]="user.Tz" name="id"><br><br>
+    <label>Full name</label>
+    <input #newFullName placeholder="Enter full name" type="text" [(ngModel)]="user.Fullname" name="fullName"><br><br>
+     <label>User Name</label>
+    <input #newUserName Placeholder="Enter user name" type="text" [(ngModel)]="user.UserName" name="userName"><br><br> 
+    <label>Birth Date</label>
+    <input #newBirthDate placeholder="Enter enter birth date" type="date" [(ngModel)]="user.Birthdate" name="birthday"><br><br>
+    <label>Gender</label>
+    <input #newGender placeholder="Enter gernder" type="text" [(ngModel)]="user.Gender" name="gender"><br><br>
+    <label>Email</label>
+    <input #newEmail placeholder="Enter email" type="email" [(ngModel)]="user.Email" name="email"><br><br>
+    <label>Password</label>
+    <input #newPassword placeholder="Enter password" type="password" [(ngModel)]="user.Password" name="password"><br><br>
+    <app-image-upload (imageSource)=addImageToUser($event)></app-image-upload>
+      <br> <br>
+    <button #createButton (click)="submitAction(user)">{{submitText}}</button>
+  </form>
+   

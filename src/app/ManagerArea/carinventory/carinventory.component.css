@@ -1,0 +1,11 @@
+table{
+    font-size: large;
+    margin: auto;
+}
+newCarTable{
+    text-align: left;
+}
+
+table, td, th{
+    border: 1px solid white;
+}

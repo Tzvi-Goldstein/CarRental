@@ -1,0 +1,56 @@
+<!--Displaying all rental orders-->
+<table>
+    <tr>
+      <th>Rental ID</th>
+      <th>Rental Start</th>
+      <th>Rental End</th>
+      <th>Rent Cost</th>
+      <th> User</th>
+      <th>Actual Return</th>
+      <th>Car Rented</th>
+    </tr>
+    <tr *ngFor="let rental of listOfRentals">
+      <td>{{rental.RentalId}}</td>
+      <td>{{rental.RentalStart}}</td>
+      <td>{{rental.RentalEnd}}</td>
+      <td>{{rental.RentCost}}</td>
+      <td>{{rental.User}}</td>
+      <td>{{rental.ActualReturn}}</td>
+      <td>{{rental.CarRented}}</td>
+      <td><button (click)="deleteRental(rental)">Delete</button></td>
+      <td><button (click)="catchEditRental(rental)">Edit</button></td>
+    </tr>
+  </table>
+  
+  <br /><br /><br /><br />
+  <!--Create/ Update rental form-->
+  <button class="displayButton" (click)="DisplayRentalFormFunction()">Add new retnal</button> 
+  <form #newRental="ngForm" [hidden]="RentFormDisplay"> 
+        <label>Rent Id</label>
+        <input disabled type="number"[(ngModel)]="carRent.RentalID" name="RentalID" placeholder="carRent.RentalID"/> <br><br>
+        <label>Rental Starting Date</label>
+        <input required #rentalStart="ngModel" type="date" [(ngModel)]="carRent.RentalStart" name="RentalStart" placeholder="carRent.RentalStart"/><br><br>
+        <label>Rental Ending Date</label>
+        <input required #rentalEnd="ngModel" type="date" [(ngModel)]="carRent.RentalEnd" name="RentalEnd" placeholder="carRent.RentalEnd"/><br><br>
+        <label>Rent Cost</label>
+        <input type="number" [(ngModel)]="carRent.RentCost" name="usage" placeholder ="carRent.RentCost"/> <br><br>
+        <label>Actual Return Date</label>
+        <input type="date" [(ngModel)]="carRent.ActualReturn" name="ActualReturn" placeholder="carRent.ActualReturn"/><br><br>
+        <label>Site Users</label>
+        <!--Selecting existing user-->
+        <select required #userId="ngModel" [(ngModel)]="carRent.User" name="User" aria-placeholder="user.UserName">
+            <option [value]="user.TZ" *ngFor="let user of listOfUsers">
+                {{user.TZ}} {{user.UserName}}
+            </option>
+          </select><br><br>
+          <label>License Numbers</label>
+          <!--Selecting existing car-->
+          <select #newCarModelChoice="ngModel" [(ngModel)]="carRent.CarRented" name="CarRented" aria-placeholder="car.LicenseNumber">
+            <option [value]="car.LicenseNumber" *ngFor="let car of listOfCars">
+              {{ car.LicenseNumber }} 
+            </option>
+          </select>
+        <br> <br>
+        <button [disabled]="!newRental.form.valid" #addRentalButton (click)="submitAction(carRent)">{{submitText}}</button>
+  </form>
+   
