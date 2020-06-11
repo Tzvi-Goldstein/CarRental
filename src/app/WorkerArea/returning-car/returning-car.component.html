@@ -1,0 +1,33 @@
+<br><br>
+<div id="carReturn">
+    <label>Enter the car license number</label>
+    <input type="number" [(ngModel)]="searchLicense"><br>
+    <Button (click)="findCarInSearch(searchLicense)">Search</Button>   
+</div>
+<br><br>
+<div  [hidden] = "isDisplayed">
+    <table class="carTable">
+        <tr>
+          <th>Rental ID</th>
+          <th>Rental Start</th>
+          <th>Rental End</th>
+          <th>Rent Cost</th>
+          <th> User</th>
+          <th>Actual Return</th>
+          <th>Car Rented</th>
+        </tr>
+        <tr>
+          <td>{{rental.RentalId}}</td>
+          <td>{{rental.RentalStart}}</td>
+          <td>{{rental.RentalEnd}}</td>
+          <td>{{rental.RentCost}}</td>
+          <td>{{rental.User}}</td>
+          <td>{{rental.ActualReturn}}</td>
+          <td>{{rental.CarRented}}</td>
+        </tr>
+      </table>
+    
+      <button (click)="calculateFinalPrice()">Press to calculate final cost if you are finishing rental todoy</button>
+</div>
+<br><br><br>
+<button [hidden]= "isAvalibleDisplayed" (click)="setAvalible()">To set the car to back to avalible press here</button>

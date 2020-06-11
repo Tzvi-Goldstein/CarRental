@@ -1,0 +1,23 @@
+table{
+    padding-top: 20%;
+    font-size: medium;
+    font-weight: bold;
+    
+}
+td{
+    background-color: gray;
+    text-decoration-line: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    
+}
+a{
+    text-decoration: none;
+    color: black;
+    font-size: large;
+    padding: 5px;
+}
+td:hover{
+    background-color: darkgrey;
+}

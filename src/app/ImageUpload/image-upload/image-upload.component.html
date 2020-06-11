@@ -1,0 +1,6 @@
+<!--Upload image -->  
+<h2>Upload Image </h2>  
+<div class="fileUpload btn btn-primary" *ngIf="isUploadBtn">  
+<span>Upload</span>  
+<input type="file" id="btnUpload" value="Upload" (change)="fileChange($event)" class="upload" />  
+</div>  

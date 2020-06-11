@@ -1,0 +1,15 @@
+
+<table>
+    <tr>
+        <td *ngIf="currentUser.Permissions == 1">    
+            <a routerLink="ManagerPage" routerLinkActive="active-link">Manage Page</a>
+        </td>
+        <td *ngIf="currentUser.Permissions < 3">
+            <a routerLink="ReturningCars" routerLinkActive="active-link">Returing Cars</a>
+        </td>
+        <td>
+            <a routerLink="CarChoice" routerLinkActive="active-link">Choose a Car</a>
+        </td>
+    </tr>
+</table>
+
