@@ -1,0 +1,51 @@
+<!--Displayin a list of all avalible cars-->
+<div class="container">
+    <div class="row">
+        <div class="search-car">
+            <input class="form-control" type="text" name="search"
+             [(ngModel)]="searchText" autocomplete="off" 
+             placeholder="&#61442;Start searching for a car">
+        </div>
+        <table class="table-striped">
+            <thead>
+                <tr>
+                    <th>Manufacturer</th>
+                    <th>Model</th>
+                    <th>Grear</th>
+                    <th>Year Model</th>
+                    <th>Cost Per Day</th>
+                  </tr>        
+            </thead>
+            <tbody>
+                <tr *ngFor="let car of listOfCars | filter:searchText">
+                    <td>
+                        <!--When clicking on this link it will send you to the 
+                            paying page with information of this car displayed-->
+                        <a #carChoice routerLink="/RentPrice/{{car.LicenseNumber}}">
+                            {{car.CarModel.Manufacturer}}
+                        </a>
+                        </td>
+                    <td>{{car.CarModel.Model}}</td>
+                    <td>{{car.CarModel.IsGear}}</td>
+                    <td>{{car.CarModel.YearManufactured}}</td>
+                    <td>{{car.CarModel.CostPerDay}}</td>
+                    <td ><img src='data:image/jpeg;base64,{{car.Image}}'/></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br>
+
+<!--Displaying all the cars that were clicked on and put in the local storage-->
+   <ul *ngFor="let car of carsFromStorage">
+       <button (click)="removeFromLocalStorage(car)">&#10008;</button>
+       <li>
+           <!--When clicking on this link it will send you to the 
+            back the paying page of this car -->
+        <a #carChoice routerLink="/RentPrice/{{car.LicenseNumber}}">
+            <img src='data:image/jpeg;base64,{{car.Image}}'/>
+        </a>
+        </li>
+   </ul>     
+        

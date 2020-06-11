@@ -1,0 +1,50 @@
+/* table{
+    font-size: large;
+    margin: auto;
+}
+newCarTable{
+    text-align: left;
+}
+
+table, td, th{
+    border: 1px solid white;
+} */
+
+
+
+.container {
+    padding-top: 50px;
+    padding-bottom: 10px;
+    color: #405065;
+  }
+  
+  .search-car {
+    max-width: 500px;
+    padding-bottom: 50px;
+    margin:auto;
+    direction: ltr;
+  }
+  
+  .form-control {
+    box-shadow: 0 10px 40px 0 #B0C1D9;
+    font-size: x-large;
+  }
+  .form-control::placeholder  {
+    font-family: FontAwesome;
+  }
+  .table-striped{
+      
+      margin:auto;
+  }
+  td, th, tr{
+    font-size: x-large;
+    color: white;
+    border: 1px solid blue;
+  }
+  ul,li{
+    display: inline;
+    size: 15px;
+  }
+  span{
+    font-size: 20px;
+  }

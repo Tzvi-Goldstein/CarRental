@@ -1,0 +1,17 @@
+div{
+    font-size: xxx-large;
+    font-weight: bold;
+}
+img{
+    float: right;
+margin-right: 15%;
+width: 600px;
+height: 300px;
+}
+p{
+    font-size:xx-large; 
+}
+a{
+    text-decoration: none;
+    font-weight: bold;
+}

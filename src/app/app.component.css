@@ -1,0 +1,33 @@
+header{
+height: 100px;
+width: 100%;    
+background-color:grey;
+font-size: 40px;
+box-sizing: border-box;
+overflow: auto;
+padding-bottom: 130px;
+position: relative;
+}
+
+body{
+    border: 2px solid;
+    width: 100%;
+    background-color:black;
+    text-align: center;
+    color: white;
+    margin: auto;
+    min-height: 150vh;
+   }
+.logo{
+    float: left;
+    padding: 10px;
+    size: 50px;
+}
+.logout{
+float: right;
+padding-right: 5%;
+padding-top: 2%;
+}
+.tablOfContent{
+    float: left;
+}
